@@ -1,0 +1,26 @@
+<ion-view view-title="Categories" id="category">
+  <ion-content>
+    <h1 style="text-align:center;">Choose Category</h1>
+
+    <div class="row responsive-sm">
+
+      <div class="col col-33">
+        <div class="card">
+          <div class="item item-divider" ng-repeat="ac in Category">
+            {{ ac.description }}
+          </div>
+          <!-- <div class="item item-text-wrap">
+            <img src="./img/livestock.jpg">
+          </div> -->
+          
+          <div class="item item-divider">
+            <button class="button icon-right ion-chevron-right button-full button-positive">
+            
+            </button>
+          </div>
+        </div>
+
+    </div>
+  </ion-content>
+</ion-view>
+

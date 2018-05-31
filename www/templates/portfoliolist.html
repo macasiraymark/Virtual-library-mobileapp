@@ -1,0 +1,52 @@
+<ion-view view-title="Portfolio List" ng-init="getAllPortfolio()">
+  <ion-content class="portfolios-content-bg">
+    <h1 style="text-align:center;" class="portfolios-welcome">Welcome</h1>
+
+    <label class="item item-input">
+    	<i class="icon ion-search placeholder-icon"></i>
+    	<input type="search" placeholder="Search Farm type" name="" ng-model="searchQuery">
+    </label>
+
+	<!-- <div class="spacer" style="width: 268px; height: 30px;"></div> -->
+
+    <ion-list>
+    	
+
+		<!-- <ion-item ng-repeat="p in portfolios"">
+		  <h2> {{p.firstname + " " + p.lastname}} <small class="pull-right"> {{p.dateposted}} </small> </>ch
+		  <h3>{{p.filename}}</h3>
+
+
+      		
+		  <a href="#/app/pdfview" class="button icon-right ion-eye button-positive" ng-click="loadNewFile(p.agriculturistid, p.filename)">View Portfolio</a>
+		</ion-item> -->
+
+		<ion-item ng-repeat="p in portfolios | filter:searchQuery" id="ion-bg" ng-controller="AppCtrl" class="chat-item">
+
+			<div class="card" id="portfolio-header-bg"> 
+			<div class="item item-divider">
+				{{ p.category }}
+				<small> {{ ac.description }} </small>
+			</div>
+			  <div class="item item-avatar">
+			  	<img src="../img/user.jpg">
+			    <h2 class="fname"> {{ p.firstname + " " + p.lastname }} </h2>
+			  </div>
+
+			  <div class="item item-text-wrap" id="wrap-bg">
+			  	<h3 class="filename"> {{ p.filename }} </h3>
+			     <a href="#/app/pdfview" class="button button-full icon-right ion-eye button-positive" ng-click="loadNewFile(p.agriculturistid, p.filename)">View Portfolio</a>
+			  </div>
+
+			  <div class="item item-divider">
+			    <small> {{ p.dateposted }} </small>
+
+
+			  </div>
+			</div>
+		</ion-item>
+
+
+	</ion-list>
+  </ion-content>
+</ion-view>

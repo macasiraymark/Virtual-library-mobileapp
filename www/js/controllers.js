@@ -1,19 +1,34 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['pdf'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, pdfDelegate, $timeout){
+  
 
   // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
+  // when they are recreated or on   start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  //markmacasiray
+  
+  
+  $scope.getPDF = function() {
+    var myPdf = localStorage.getItem('pdfpath');
+    $scope.pdfUrl = myPdf;
+  }
 
-  // Form data for the login modal
-  $scope.loginData = {};
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+    $scope.loadNewFile = function(refid, url) {
+      var path = 'http://localhost/virtualportfolio/uploads/portfolios/' + refid + '/'+ url;
+     
+      localStorage.setItem('pdfpath', path);
+      pdfDelegate
+        .$getByHandle('my-pdf-container')
+        .load(path);
+    };
+
+
+   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
@@ -41,16 +56,27 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+
+.controller('PortfolioCtrl', ['$scope', '$stateParams', '$http', function ($scope, $stateParams, $http) {
+
+  $scope.portfolios = [];
+  $scope.getAllPortfolio = function() {
+    $http.get(base_url  + 'models/portfolios/select-portfolios.php')
+    .then(response => {
+      $scope.portfolios = response.data;
+    })
+  }
+}]);
+
+
+// .controller('CategoryCtrl', ['$scope', '$stateParams', '$http', function ($scope, $stateParams, $http) {
+
+//   $scope.category = [];
+//   $scope.getAllCategories = function() {
+//     $http.get(base_url  + 'models/category/select-category.php')
+//     .then(response => {
+//       $scope.category = response.data;
+//     })
+//   }
+// }]);

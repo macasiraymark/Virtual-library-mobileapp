@@ -1,11 +1,11 @@
 <ion-side-menus enable-menu-with-back-views="false">
+
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
+    <ion-nav-bar class="side-menu-left side-menu-gradient">
       <ion-nav-back-button>
       </ion-nav-back-button>
-
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        <button class="button button-icon ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -13,24 +13,43 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
+
+    <ion-content padding="false" style="top:0px !important;" class="side-menu-left side-menu-gradient">
+      <div class="spacer" style="width: 268px; height: 30px;"></div>
+      <div class="profile-image">
+        <img src="img/DA-logo.png" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;" class="logo-bounce">
+      </div>
+
+      <h3 id="menu-heading1" style="color:#EDF3EF;font-weight:300;text-align:center;">DA Virtual Library</h3>
+
+      <div class="spacer" style="width: 268px; height: 31px;"></div>
+
+      <!-- <ion-list id="menu-list1">
+        <ion-item menu-close ng-click="login.show" class="item-icon-left side-menu-item">
+          <i class="icon ion-log-in"></i> Preview
+        </ion-item> -->
+        
+        <ion-item menu-close href="#/app/about" class="item-icon-left side-menu-item">
+          <i class="icon ion-information-circled"></i> About
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+
+        <!-- <ion-item menu-close href="#/app/category" class="item-icon-left side-menu-item">
+          <i class="icon ion-grid"></i> Choose Category
+        </ion-item> -->
+        
+        <ion-item menu-close href="#/app/portfoliolist" class="item-icon-left side-menu-item">
+          <i class="icon ion-filing"></i> Portfolio List
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>
+        
+      
+
+        
       </ion-list>
+      
     </ion-content>
+
   </ion-side-menu>
+
 </ion-side-menus>
+
+
